@@ -5,8 +5,8 @@ from Model.transaction import Transaction
 
 
 class Member(Account):
-    def __init__(self, id = 0, email = '', passwd = '', role = Role.MEMBER, pinNum = ''):
-        super().__init__(id, email, passwd, role, pinNum)
+    def __init__(self, id = 0, email = '', passwd = '', pinNum = ''):
+        super().__init__(id, email, passwd, Role.MEMBER, pinNum)
         self.wallet = 0.0
         self.transactions: List[Transaction] = []
 
