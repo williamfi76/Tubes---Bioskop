@@ -1,15 +1,18 @@
 import datetime
+from typing import List
 from Model.movie import Movie
 from Model.studio import Studio
+from Model.transactionTicket import TransactionTicket
 
 
 class Showing:
-    def __init__(self, id, movie:Movie, studio:Studio, startingTime:datetime, endingTime:datetime):
+    def __init__(self, id, movie:Movie, studio:Studio, startingTime:datetime, endingTime:datetime, transactions: List[TransactionTicket]):
         self.id = id
         self.movie:Movie = movie
         self.showingTime = startingTime
         self.endingTime = endingTime
         self.studio = studio
+        self.transactions = transactions
 
     def get_id(self):
         return self.id

@@ -1,12 +1,23 @@
 from typing import List
 
+from Model.genre import Genre
+from Model.reviewFilm import ReviewFilm
+
 class Movie:
-    def __init__(self, name:str, description:str, duration:int, poster:str, genre = []):
+    def __init__(self, id: int, name:str, description:str, duration:int, poster:str, genre: List[Genre] = [], review:ReviewFilm = []):
+        self.id = id
         self.name = name
         self.description = description
         self.duration = duration
         self.poster = poster
         self.genre = genre
+        self.review = review
+
+    def get_id(self):
+        return self.id
+
+    def set_id(self, value):
+        self.id = value
 
     def get_name(self):
         return self.name
