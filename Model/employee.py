@@ -3,5 +3,5 @@ from Model.role import Role
 
 
 class Employee(Account):
-    def __init__(self, id = 0, email = '', passwd = '', pinNum = ''):
-        super().__init__(id, email, passwd, Role.EMPLOYEE, pinNum)
+    def __init__(self, id = 0, name:str = "", email = '', passwd = '', pinNum = ''):
+        super().__init__(id, name, email, passwd, Role.EMPLOYEE, pinNum)

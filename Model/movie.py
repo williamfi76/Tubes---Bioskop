@@ -1,10 +1,11 @@
 from typing import List
 
+from Model.movieStatus import MovieStatus
 from Model.genre import Genre
 from Model.reviewFilm import ReviewFilm
 
 class Movie:
-    def __init__(self, id: int, name:str, description:str, duration:int, poster:str, genre: List[Genre] = [], review:ReviewFilm = []):
+    def __init__(self, id: int, name:str, description:str, duration:int, poster:str, genre: List[Genre] = [], review:List[ReviewFilm] = [], status:MovieStatus = MovieStatus.NOT_SHOWING):
         self.id = id
         self.name = name
         self.description = description
@@ -12,6 +13,14 @@ class Movie:
         self.poster = poster
         self.genre = genre
         self.review = review
+        self.status = status
+
+    def get_status(self):
+        return self.status
+
+    def set_status(self, value):
+        self.status = value
+
 
     def get_id(self):
         return self.id

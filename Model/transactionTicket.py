@@ -1,5 +1,6 @@
 from typing import List
 from Model.itemType import ItemType
+from Model.member import Member
 from Model.reviewFilm import ReviewFilm
 from Model.showing import Showing
 from Model.ticket import Ticket
@@ -8,10 +9,11 @@ from Model.transaction import Transaction
 
 
 class TransactionTicket(Transaction):
-    def __init__(self, id, tickets:List[Ticket], nominal, memberId = 0, ticketStatus:TicketStatus = TicketStatus.UNREDEEMED, review:ReviewFilm = None, showing:Showing = None):
-        super().__init__(id, nominal, ItemType.MOVIE, memberId)
+    def __init__(self, id, tickets:List[Ticket], member:Member = None, showing:Showing = None, ticketStatus:TicketStatus = TicketStatus.UNREDEEMED, review:ReviewFilm = None):
+        nominal = showing.get_studio().get_pricePerSeat() * len(tickets)
+        super().__init__(id, nominal, member.get_id())
         self.tickets:List[Ticket] = tickets
-        self.ticketStatus:TicketStatus
+        self.ticketStatus:TicketStatus = ticketStatus
         self.review:ReviewFilm = review
         self.showing = showing
 

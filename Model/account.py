@@ -2,12 +2,19 @@ from Model.role import Role
 
 
 class Account:
-    def __init__(self, id:int = 0, email:str = '', passwd:str='', role:Role = Role.MEMBER, pinNum:str=''):
+    def __init__(self, id:int = 0, name:str = "", email:str = '', passwd:str='', role:Role = Role.MEMBER, pinNum:str=''):
         self.id = id
+        self.name = name
         self.email = email
         self.password = passwd
         self.role = role
         self.pin = pinNum
+
+    def get_name(self):
+        return self.name
+    
+    def set_name(self, name):
+        self.name = name
 
     def get_pin(self):
         return self.pin

@@ -19,9 +19,3 @@ class Ticket:
     def set_seatName(self, value):
         self.seatName = value
 
-    def get_redeem(self):
-        return self.redeem
-
-    def set_redeem(self, value):
-        self.redeem = value
-

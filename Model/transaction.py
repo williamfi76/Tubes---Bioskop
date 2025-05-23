@@ -1,10 +1,10 @@
 from Model.itemType import ItemType
 
 class Transaction:
-    def __init__(self, id, nominal, memberId:int = 0):
+    def __init__(self, id, nominal, member:int):
         self.id = id
         self.nominal: float = nominal
-        self.memberId: int
+        self.memberId = member
 
     def get_id(self):
         return self.id
