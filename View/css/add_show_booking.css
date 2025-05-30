@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+a.add-showing {
+    position: relative;
+    bottom: 50px;
+    left: 160px;
+    font-size: 24px;
+    border-radius: 10px;
+    background-color: yellow;
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    font-weight: 800;
+}
+
+a.add-showing:hover {
+    background-color: black;
+    color: yellow;
+    border-color: yellow;
+    border-style: solid;
+
+}
+
+#phone-case h2 {
+    color: yellow;
+    font-size: 48px;
+    text-align: left;
+    position: relative;
+    right: 120px;
+    text-transform: uppercase;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+form {
+    position: relative;
+    top: 560px;
+}
+
+.filter-bar {
+    position: relative;
+    bottom: 575px;
+  padding: 10px;    
+  width: 80%;
+}
+
+.filter-grid {
+    display: grid;
+    bottom: 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+select, input[type="date"] {
+    padding: 8px;
+    font-size: 14px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+select, input[type="date"] {
+    padding: 8px;
+    font-size: 14px;
+}
+
+.table-container {
+    position: sticky;
+    max-height: 500px;
+    width: 500px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f0f0f0;
+    position: sticky;
+    top: 0;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #646464;
+    color: black;
+    text-align: left;
+}
+
+td {
+    color: white;
+}
+
+th {
+    text-align: center;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+tr:hover td {
+    color: black;
+}

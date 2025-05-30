@@ -1,0 +1,28 @@
+.footer-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 540px; /* same as phone-case */
+  height: 80px;
+  background-color:yellow;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid yellow;
+  z-index: 1000;
+  box-shadow: 0 -1px 5px rgba(210, 255, 48, 0.1);
+}
+
+.footer-navbar a img {
+  height: 50px;
+  width: 50px;
+}
+
+.footer-navbar a .selected {
+  filter: brightness(0.8);
+  background-color: rgb(46, 46, 46);
+  border-radius: 10px;
+  border-width: 20px;
+   box-shadow: 0 -1px 5px rgba(210, 255, 48, 0.1);
+}

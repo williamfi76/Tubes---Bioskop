@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Username</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='change-password.css') }}" />
+  </head>
+  <body>
+    <div id="phone-case">
+        <a class="back-button" href="{{ url_for('account.showUserProfile') }}">Back</a>
+        
+        <form method="post">
+          <label for="old-pin">New Username</label>
+          <input
+            type="text"
+            id="new-name"
+            name="new-name"
+            required
+            value="{{ session['name'] }}"
+          />
+          <button type="submit">Update Username</button>
+        </form>
+        {% if error %}
+        <p class="error" style="color: red;">{{ error }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

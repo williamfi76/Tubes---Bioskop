@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seat Picker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<style>
+    body {
+  font-family: sans-serif;
+  background: #f1f3f5;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.screen {
+  background: #ccc;
+  padding: 10px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.seats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.seat {
+  display: none;
+}
+
+.seat + label {
+  background-color: #e0e0e0;
+  padding: 12px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 14px;
+  min-width: 45px;
+  text-align: center;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+}
+
+.seat:checked + label {
+  background-color: yellow;
+  color: black;
+}
+
+
+.submit-btn {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+.seat:disabled {
+    background-color: rgb(36, 36, 36);
+}
+
+</style>
+<body>
+  <div class="container">
+    <h1>Select Your Seat</h1>
+
+    <div class="screen">SCREEN</div>
+
+    <div class="seats">
+      <!-- Rows A–E, 6 seats each -->
+      <div class="row">
+        <input type="checkbox" id="A1" class="seat" />
+        <label for="A1">A1</label>
+        <input type="checkbox" id="A2" class="seat" />
+        <label for="A2">A2</label>
+        <input type="checkbox" id="A3" class="seat" />
+        <label for="A3">A3</label>
+        <input type="checkbox" id="A4" class="seat" />
+        <label for="A4">A4</label>
+        <input type="checkbox" id="A5" class="seat" />
+        <label for="A5">A5</label>
+        <input type="checkbox" id="A6" class="seat" />
+        <label for="A6">A6</label>
+      </div>
+
+      <div class="row">
+        <input type="checkbox" id="B1" class="seat" disabled/>
+        <label for="B1">B1</label>
+        <input type="checkbox" id="B2" class="seat" />
+        <label for="B2">B2</label>
+        <input type="checkbox" id="B3" class="seat" />
+        <label for="B3">B3</label>
+        <input type="checkbox" id="B4" class="seat" />
+        <label for="B4">B4</label>
+        <input type="checkbox" id="B5" class="seat" />
+        <label for="B5">B5</label>
+        <input type="checkbox" id="B6" class="seat" />
+        <label for="B6">B6</label>
+      </div>
+
+      <div class="row">
+        <input type="checkbox" id="C1" class="seat" />
+        <label for="C1">C1</label>
+        <input type="checkbox" id="C2" class="seat" />
+        <label for="C2">C2</label>
+        <input type="checkbox" id="C3" class="seat" />
+        <label for="C3">C3</label>
+        <input type="checkbox" id="C4" class="seat" />
+        <label for="C4">C4</label>
+        <input type="checkbox" id="C5" class="seat" />
+        <label for="C5">C5</label>
+        <input type="checkbox" id="C6" class="seat" />
+        <label for="C6">C6</label>
+      </div>
+
+      <div class="row">
+        <input type="checkbox" id="D1" class="seat" />
+        <label for="D1">D1</label>
+        <input type="checkbox" id="D2" class="seat" />
+        <label for="D2">D2</label>
+        <input type="checkbox" id="D3" class="seat" />
+        <label for="D3">D3</label>
+        <input type="checkbox" id="D4" class="seat" />
+        <label for="D4">D4</label>
+        <input type="checkbox" id="D5" class="seat" />
+        <label for="D5">D5</label>
+        <input type="checkbox" id="D6" class="seat" />
+        <label for="D6">D6</label>
+      </div>
+
+      <div class="row">
+        <input type="checkbox" id="E1" class="seat" />
+        <label for="E1">E1</label>
+        <input type="checkbox" id="E2" class="seat" />
+        <label for="E2">E2</label>
+        <input type="checkbox" id="E3" class="seat" />
+        <label for="E3">E3</label>
+        <input type="checkbox" id="E4" class="seat" />
+        <label for="E4">E4</label>
+        <input type="checkbox" id="E5" class="seat" />
+        <label for="E5">E5</label>
+        <input type="checkbox" id="E6" class="seat" />
+        <label for="E6">E6</label>
+      </div>
+    </div>
+
+    <button class="submit-btn">Confirm Selection</button>
+  </div>
+</body>
+</html>

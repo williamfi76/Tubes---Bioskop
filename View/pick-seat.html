@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buying a Ticket</title>
+    <!-- <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/phone-case.css" />
+    <link rel="stylesheet" href="css/logo.css" /> -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='logo.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home_page.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='phone-case.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='pick-seat.css') }}"
+    />
+  </head>
+  <body>
+    <div id="phone-case">
+            <a class="back-button" href="{{ url_for('member.showMovieShowing', movie_id=showing_data.get_movie().get_id()) }}">Back</a>
+      <form 
+        action="{{ url_for('member.pickSeat', show_id=show_id) }}"
+        method="post"
+      >
+        <div class="checkbox-grid">
+          <div class="seats-space">
+            <h1>{{showing_data.get_movie().get_name()}}</h1>
+            <div class="seat-legend">
+              <div class="legend-item">
+                <span class="legend-box available"></span> Available
+              </div>
+              <div class="legend-item">
+                <span class="legend-box selected"></span> Selected
+              </div>
+              <div class="legend-item">
+                <span class="legend-box taken"></span> Taken
+              </div>
+            </div>
+            {%if error%}
+            <p class="info-warning" style="color: red;" name="warning">{{error}}</p>
+            {%endif%}
+            <div class="seat-grid">
+              {%set row_name=["A","B","C","D","E","F","G","H","I","J","K"] %}
+              {% for row in range(0, showing_data.get_studio().get_row()) %} {% for column in range(0, showing_data.get_studio().get_column()) %}
+              {%set picked =  row_name[row] ~ (column+1)%}
+              <input
+                type="checkbox"
+                class="seat"
+                name="selected_items"
+                {% if picked in picked_seat %}
+                disabled
+                {%endif%}
+                value="{{picked}}"
+                id="{{picked}}"
+              />
+              <label for="{{ picked }}">{{ picked }}</label>
+              {% endfor %} {% endfor %}
+            </div>
+          </div>
+          <div class="screen">
+            <h3>SCREEN</h3>
+          </div>
+          <div class="seat-info-box">
+  <p><strong>Selected Seats:</strong> <span id="selected-seats">None</span></p>
+  <p><strong>Total Price:</strong> Rp <span id="total-price" name="total-price">0</span></p>
+  <input type="hidden" name="total-price" id="hidden-price">
+  <label for="input-pin-number">PIN Number</label>
+  <input type="password" id="input-pin-number" name="input-pin-number" inputmode="numeric" pattern="\d{4}" maxlength="4" required placeholder="Enter PIN" />
+
+  <button type="submit">ORDER</button>
+</div>
+      </form>
+    </div>
+  </body>
+  <script>
+
+    const form = document.querySelector("form");
+  form.addEventListener("submit", () => {
+    document.getElementById("hidden-price").value = 
+      document.getElementById("total-price").textContent;
+  });
+  const checkboxes = document.querySelectorAll('.seat[type="checkbox"]:not(:disabled)');
+  const selectedSeatsDisplay = document.getElementById("selected-seats");
+  const totalPriceDisplay = document.getElementById("total-price");
+  const pinInput = document.getElementById("input-pin-number");
+  const seatPrice = {{ showing_data.get_studio().get_pricePerSeat() }};
+
+  function updateSummary() {
+    const selected = Array.from(checkboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+
+    // Show selected seats
+    selectedSeatsDisplay.textContent = selected.length ? selected.join(", ") : "None";
+
+    // Show total price
+    totalPriceDisplay.textContent = selected.length * seatPrice;
+
+    // Optionally style selected labels
+    document.querySelectorAll("label").forEach(label => {
+      label.classList.remove("selected");
+    });
+    selected.forEach(seatId => {
+      const label = document.querySelector(`label[for="${seatId}"]`);
+      if (label) {
+        label.classList.add("selected");
+      }
+    });
+  }
+
+  // Event listener on all checkboxes
+  checkboxes.forEach(cb => {
+    cb.addEventListener("change", updateSummary);
+  });
+
+  // Restrict PIN to digits only
+  pinInput.addEventListener("input", () => {
+    pinInput.value = pinInput.value.replace(/\D/g, "");
+  });
+
+  // Run once on page load (in case of pre-checked seats)
+  updateSummary();
+</script>
+</html>

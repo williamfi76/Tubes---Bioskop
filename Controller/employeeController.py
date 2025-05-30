@@ -1,9 +1,17 @@
 from typing import List
+
+from flask import Blueprint, render_template
 from Controller import mysqlConnector
 from Controller.accountController import getFoodBeverageData
 from Model.foodBeverage import FoodBeverage
 from Model.foodBeverageStatus import FoodBeverageStatus
 from Model.transactionFoodBeverage import TransactionFoodBeverage
+
+employee_bp = Blueprint('employee', __name__, url_prefix='/employee')
+
+@employee_bp.route("movies/<int:member_id>")
+def movie_homepage(member_id):
+    return render_template("home_page.html", member_id=member_id)
 
 def getAllFoodBeverageOrdersFromTransaction(trans_id: int):
     items:List[FoodBeverage] = []

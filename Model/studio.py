@@ -1,14 +1,10 @@
 class Studio:
     def __init__(self, id, name, pricePerSeat:float, rows, columns):
-        self.seats = []
         self.pricePerSeat = pricePerSeat
         self.id = id
         self.name = name
-        for row in range(0, rows):
-            rowSeats = []
-            for column in range(0, columns):
-                rowSeats.append("True")
-            self.seats.append(rowSeats)
+        self.row = rows
+        self.column = columns
 
     def get_id(self):
         return self.id
@@ -28,8 +24,14 @@ class Studio:
     def set_pricePerSeat(self, value):
         self.pricePerSeat = value
     
-    def get_seats(self):
-        return self.seats
+    def get_row(self):
+        return self.row
 
-    def set_seats(self, value):
-        self.seats = value
+    def set_row(self, value):
+        self.row = value
+
+    def get_column(self):
+        return self.column
+
+    def set_column(self, value):
+        self.column = value

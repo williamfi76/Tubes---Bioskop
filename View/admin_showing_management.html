@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Movies</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='logo.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home-page.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='phone-case.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='change-password.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='admin_showing_management.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='navbar.css') }}"
+    />
+  </head>
+  <body>
+    <div id="phone-case">
+      <div class="logo">TiketIn</div>
+      <p class="nama-user nama-admin">
+        Hai Admin {{ session["name"].capitalize() }}
+      </p>
+      <div class="seat-legend">
+        <div class="legend-item">
+          <span class="legend-box showing"></span> Showing
+        </div>
+        <div class="legend-item">
+          <span class="legend-box not-showing"></span> Not Showing
+        </div>
+      </div>
+      <div class="list-movies">
+        {% for movie in movies %}
+        <div class="single-movie {%if movie.get_status().value == 1%}showing{%endif%}">
+          <p>{{movie.get_name()}}</p>
+        </div>
+        {%endfor%}
+      </div>
+      <div class="footer-navbar">
+        <a href="{{url_for('admin.showShowingMovies')}}"
+          ><img
+            class="selected"
+            src="{{ url_for('static', filename='asset/icons/movie.svg')}}"
+        /></a>
+        <a href="{{url_for('admin.showStudioBooking')}}"
+          ><img
+            src="{{ url_for('static', filename='asset/icons/ticket_black.svg')}}"
+        /></a>
+        <a href="{{url_for('account.showUserProfile')}}"
+          ><img
+            src="{{ url_for('static', filename='asset/icons/profile_black.svg')}}"
+        /></a>
+        <button class="floating-button" >
+          <a href="{{url_for('admin.showAddNewMovie')}}">+</a>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_page.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='account_profile.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='change-password.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assign_admin.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_show_booking.css') }}" />
+    <title>Show Booking</title>
+  </head>
+  <body>
+    <div id="phone-case">
+      <h2>Movie List</h2>
+      <a href="{{url_for('admin.showAddNewShowing')}}" class="add-showing">Add Showing</a>
+      <div class="filter-bar">
+        <form method="get" class="filter-grid">
+          <select name="movie_name" id="filter-movie-name">
+            <option value="">All Movies</option>
+            {% for name in movie_names %}
+            <option value="{{ name }}" {% if movie_name == name %} selected {% endif %}>{{ name }}</option>
+            {% endfor %}
+          </select>
+
+          <select name="studio" id="filter-studio">
+            <option value="">All Studios</option>
+            {% for studio in studios %}
+            <option value="{{ studio }}" {% if input_studio == studio %}selected{% endif %}>{{ studio }}</option>
+            {% endfor %}
+          </select>
+
+          <input type="date" name="date" id="filter-date" value="{{ request.args.get('date', '') }}">
+          <button type="submit">Filter</button>
+        </form>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Movie Name</th>
+              <th>Studio</th>
+              <th>Date & Time</th>
+            </tr>
+          </thead>
+          <tbody id="movie-table-body">
+            {% if movie_datas | length == 0 %}
+            <tr>
+              <td colspan="3" style="text-align: center">No movies found.</td>
+            </tr>
+            {% else %}
+            {% for movie in movie_datas %}
+            <tr>
+              <td class="movie-name">{{ movie[0] }}</td>
+              <td class="studio">{{ movie[1] }}</td>
+              <td class="date">{{ movie[2] }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="footer-navbar">
+        <a href="{{ url_for('admin.showShowingMovies') }}">
+          <img src="{{ url_for('static', filename='asset/icons/movie_black.svg') }}" />
+        </a>
+        <a href="{{ url_for('admin.showStudioBooking') }}">
+          <img class="selected" src="{{ url_for('static', filename='asset/icons/ticket.svg') }}" />
+        </a>
+        <a href="{{ url_for('account.showUserProfile') }}">
+          <img src="{{ url_for('static', filename='asset/icons/profile_black.svg') }}" />
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

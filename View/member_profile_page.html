@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_page.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='account_profile.css') }}"/>
+    <title>Member Profile</title>
+  </head>
+  <body>
+    <div id="phone-case">
+      <div class="logo">TiketIn</div>
+      <div id="saldo-member">
+        <h2>{{ "{:,.0f}".format(session['wallet']) }}</h2>
+        <hr>
+      </div>
+      <p class="nama-user">Hai {{ session["name"].capitalize() }}</p>
+      <div class="user-profile-features">
+        <a href="{{ url_for('account.changeProfile')}}">Edit Profile</a>
+        <a href="{{ url_for('account.changePassword')}}">Ganti Password</a>
+        <a href="{{url_for('account.changePinNumber')}}">Ganti Pin</a>
+        <a href="{{url_for('member.showTopUpPage')}}">Top Up</a>
+        <a href="{{url_for('logout')}}">Log Out</a>
+      </div>
+      <div class="footer-navbar">
+        <a href="{{url_for('member.showShowingMovies')}}"><img src="{{ url_for('static', filename='asset/icons/movie_black.svg')}}"></a>
+        <a href="{{url_for('member.showMemberTicketData')}}"><img src="{{ url_for('static', filename='asset/icons/ticket_black.svg')}}"></a>
+        <a href="{{url_for('account.showUserProfile')}}"><img class="selected" src="{{ url_for('static', filename='asset/icons/profile.svg')}}"></a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Up Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='change-password.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='top-up.css') }}" />
+  </head>
+  <body>
+    <div id="phone-case">
+        <a class="back-button" href="{{ url_for('account.showUserProfile') }}">Back</a>
+        <p class="saldo">Saldo: {{ "{:,.0f}".format(session['wallet']) }}</p>
+        
+        <form method="post">
+            <label for="amount">Top Up Amount:</label><br>
+            <input type="text" id="amount" name="amount" class="amount-input" value="0" />
+            <label for="pin-number">Pin Number</label>
+            <input
+              type="password"
+              class=""
+              id="pin-number"
+              name="pin-number"
+              inputmode="numeric" 
+              pattern="\d{4}" 
+              maxlength="4" 
+              required 
+              placeholder="Enter New Pin Number"
+            />
+            <button type="submit">Top Up</button>
+        </form>
+        {% if error %}
+        <p class="error" style="color: red;">{{ error }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+    <script>
+    const input = document.getElementById("amount");
+
+    input.addEventListener("input", function (e) {
+      // Remove non-digits and commas
+      let val = e.target.value.replace(/,/g, '').replace(/\D/g, '');
+
+      // Format with commas
+      e.target.value = val.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    });
+  </script>
+</html>

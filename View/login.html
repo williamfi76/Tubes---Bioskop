@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/phone-case.css" />
+    <link rel="stylesheet" href="css/logo.css" /> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}" />
+  </head>
+  <body>
+    <div id="phone-case">
+      <div class="logo">TiketIn</div>
+      <div class="login-container">
+        <h2>LOGIN</h2>
+        {% if error %}
+        <p class="error" style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+          <label for="phone">Email</label>
+          <input type="email" id="email" name="email" placeholder="example@origin.org" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+          <label for="phone">Password</label>
+          <input type="password" id="password" name="password" required />
+          <button type="submit">Login</button>
+        </form>
+        <p class="note">
+          If you don't have an account, <a href="{{url_for('register_route')}}">Register</a> Today!
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

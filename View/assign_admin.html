@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='logo.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='phone-case.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home_page.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='account_profile.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='change-password.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='assign_admin.css') }}"
+    />
+    <title>Admin Profile</title>
+  </head>
+  <body>
+    <div id="phone-case">
+      <div class="logo">TiketIn</div>
+      <a class="back-button" href="{{ url_for('account.showUserProfile') }}"
+        >Back</a
+      >
+      <p class="nama-user nama-admin">
+        Hai Admin {{ session["name"].capitalize() }}
+      </p>
+      <form method="POST">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder="Enter Email"
+        />
+        <button class="assign-admin" type="submit">Assign Admin</button>
+      </form>
+        {% if error %}
+            <p class="error" style="color:red;"> {{ error }}</p>
+        {% endif %}
+    </div>
+  </body>
+</html>

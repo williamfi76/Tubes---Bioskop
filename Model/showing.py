@@ -8,8 +8,8 @@ class Showing:
     def __init__(self, id, movie:Movie, studio:Studio, startingTime:datetime, endingTime:datetime):
         self.id = id
         self.movie = movie
-        self.showingTime = startingTime
-        self.endingTime = endingTime
+        self.showingTime:datetime = startingTime
+        self.endingTime:datetime = endingTime
         self.studio = studio
 
     def get_id(self):

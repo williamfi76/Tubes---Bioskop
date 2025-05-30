@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buying a Ticket</title>
+    <!-- <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/phone-case.css" />
+    <link rel="stylesheet" href="css/logo.css" /> -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='logo.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='home_page.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='phone-case.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='showing-movie.css') }}"
+    />
+  </head>
+  <body>
+    <div id="phone-case">
+      <a class="back-button" href="{{ url_for('member.showShowingMovies') }}">Back</a>
+      <div class="logo">TiketIn</div>
+      <div class="movie-stats">
+        <img
+          class="poster"
+          src="{{url_for('static', filename='asset/poster/' ~ movie.get_poster())}}"
+          alt=""
+        />
+        <div class="movie-desc">
+          <p class="title">{{movie.get_name()}}</p>
+          <p class="duration">{{movie.get_duration()}} minutes</p>
+          <ul class="genres">
+            {% for genre in genre_list %}
+            <li>{{genre.name.capitalize().replace("_", " ")}}</li>
+            {% endfor %}
+          </ul>
+          <p class="description">{{movie.get_description()}}</p>
+        </div>
+      </div>
+      <div class="showing-date">
+        {% for date in showing_dates %}
+        <a
+          href="{{url_for('member.showMovieShowing', movie_id=movie.get_id(), selected_id=loop.index0)}}"
+        >
+          <div
+            class="scroll-date {% if loop.index0 == selected_id %}selected{%endif%}"
+          >
+            <p class="day">{{date.strftime("%A")[:3].upper()}}</p>
+            <p class="date">{{date.day}}/{{date.month}}</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="showing-times">
+        {% for time in showing_times %}
+        {% set valid_time = true%}
+        {% if showing_dates[selected_id].day == time[1].day and showing_dates[selected_id].month == time[1].month %}
+        {% if  time[1] > current_time %}
+        {% set valid_time = false%}
+        {%endif%}
+        <a class="schedule{% if valid_time %} disabled-link {% endif %}" {% if not valid_time %} aria-disabled="true" {% endif %} href="{{url_for('member.pickSeat', show_id=time[0])}}" >
+          <div class="showing-time">
+            <p class="time">{{"%02d"|format(time[1].hour)}}:{{"%02d"|format(time[1].minute)}}</p>
+            <p class="price">Rp {{"{:,.0f}".format(time[2])}}</p>
+          </div>
+        </a>
+        {% endif %} {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

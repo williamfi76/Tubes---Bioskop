@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='logo.css') }}"
+    />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='phone-case.css') }}"
+    />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='home_page.css') }}"
+    />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='navbar.css') }}"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style-showings.css')}}">
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div id="phone-case">
+      <p class="greeting">Halo {{ (session['name'].split(" ")[0]).capitalize() }}!</p>
+      <div class="logo">TiketIn</div>
+      <section class="movie-list scrollable-content">
+          {% if movies|length == 0 %}
+          <h2 style="position: relative; top: 275px; justify-content: center; align-items: center; left: 25px;font-family: 'Courier New', Courier, monospace;width: 300px;">Tidak ada Film yang sedang tayang...</h2>
+          {% else %}
+            {% for movie in movies %}
+          <div class="movie-item">
+            <a href="{{url_for('member.showMovieShowing', movie_id=movie.get_id())}}">
+              <img src="{{ url_for('static', filename='asset/poster/' ~ movie.poster) }}" alt="{{ movie.name }}">
+            </a>
+            <p>{{ movie.name }}</p>
+          </div>
+            {% endfor %}
+            <!-- Add more movie items as needed -->
+          {%endif%}
+        </section>
+      <div class="footer-navbar">
+        <a href="{{url_for('member.showShowingMovies')}}"><img class="selected" src="{{ url_for('static', filename='asset/icons/movie.svg')}}"></a>
+        <a href="{{url_for('member.showMemberTicketData')}}"><img src="{{ url_for('static', filename='asset/icons/ticket_black.svg')}}"></a>
+        <a href="{{url_for('account.showUserProfile')}}"><img src="{{ url_for('static', filename='asset/icons/profile_black.svg')}}"></a>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

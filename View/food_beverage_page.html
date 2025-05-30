@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_page.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='navbar.cs') }}s">
+    <title>Food and Beverage</title>
+  </head>
+  <body>
+    <div id="phone-case">
+      <div class="logo">TiketIn</div>
+      <div class="footer-navbar">
+        <a href="{{url_for('member.showShowingMovies')}}"><img src="{{ url_for('static', filename='asset/icons/movie_black.svg')}}"></a>
+        <a href="{{url_for('member.showMemberTicketData')}}"><img src="{{ url_for('static', filename='asset/icons/ticket_black.svg')}}"></a>
+        <a href="{{url_for('member.showMemberFoodBeverageData')}}"><img class="selected" src="{{ url_for('static', filename='asset/icons/food_beverage.svg')}}"></a>
+        <a href="{{url_for('account.showUserProfile')}}"><img src="{{ url_for('static', filename='asset/icons/profile_black.svg')}}"></a>
+      </div>
+    </div>
+  </body>
+</html>

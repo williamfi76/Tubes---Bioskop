@@ -1,0 +1,23 @@
+form {
+    position: relative;
+    top: 170px;
+}
+
+form .email {
+    width: 400px;
+}
+
+form button {
+    background-color: yellow;
+    text-transform: uppercase;
+    color: black;
+    font-weight: 800;
+}
+
+form button:hover {
+    color: white;
+}
+
+.back-button {
+    top: 8px;
+}

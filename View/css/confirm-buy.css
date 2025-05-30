@@ -1,0 +1,22 @@
+h2 {
+    margin-top: 150px;
+    color: yellow;
+    font-size: 70px;
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+}
+
+a {
+    margin-top: 200px;
+    background-color: yellow;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 200px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: solid;
+    font-size: 30px;
+    border-radius: 10px;
+}

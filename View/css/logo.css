@@ -1,0 +1,19 @@
+.logo {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 5.5em;
+      height: 1.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: yellow;
+      border-radius: 50%;
+      color: rgb(0, 0, 0);
+      font-size: 4rem;
+      font-weight: bold;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.304);
+      font-style: italic;
+    }

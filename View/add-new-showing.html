@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Username</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='change-password.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='add-new-showing.css') }}" />
+  </head>
+  <body>
+    <div id="phone-case">
+        <a class="back-button" href="{{ url_for('admin.showStudioBooking') }}">Back</a>
+        
+        <form method="post">
+          <label for="movie_name">Movie Title:</label>
+  <select name="movie_name" class="dropdown-selection" id="movie_name" required>
+    {% for movie in movies %}
+      <option value="{{ movie.get_id() }}">{{ movie.get_name() }}</option>
+    {% endfor %}
+  </select>
+
+  <br><br>
+
+  <label for="studio_name">Studio Name:</label>
+  <select name="studio_name" class="dropdown-selection" id="studio_name" required>
+    {% for studio in studios %}
+      <option value="{{ studio.get_id() }}">{{ studio.get_name() }}</option>
+    {% endfor %}
+  </select>
+
+  <br><br>
+
+  <label for="start_time">Start Time:</label>
+  <input type="datetime-local" name="start_time" id="start_time" required>
+
+  <br><br>
+
+  <label for="end_time">End Time:</label>
+  <input type="datetime-local" name="end_time" id="end_time" required>
+
+  <br><br>
+
+  <button type="submit">ADD SHOWING</button>
+        </form>
+        {% if error %}
+        <p class="error" style="color: red;">{{ error }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

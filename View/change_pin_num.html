@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Pin Number</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='logo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='phone-case.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='change-password.css') }}" />
+  </head>
+  <body>
+    <div id="phone-case">
+        <a class="back-button" href="{{ url_for('account.showUserProfile') }}">Back</a>
+        
+        <form method="post">
+          <label for="old-pin">Old Pin Number</label>
+          <input
+            type="password"
+            id="old-pin"
+            name="old-pin"
+            inputmode="numeric" 
+            pattern="\d{4}" 
+            maxlength="4" 
+            required 
+            placeholder="Enter Old Pin Number"
+          />
+          <label for="new-pin">New Pin Number</label>
+          <input
+            type="password"
+            id="new-pin"
+            name="new-pin"
+            inputmode="numeric" 
+            pattern="\d{4}" 
+            maxlength="4" 
+            required 
+            placeholder="Enter New Pin Number"
+          />
+
+          <label for="new-pin-2">Re-Enter New Password</label>
+          <input
+            type="password"
+            id="new-pin-2"
+            name="new-pin-2"
+            inputmode="numeric" 
+            pattern="\d{4}" 
+            maxlength="4" 
+            required 
+            placeholder="Enter New Pin Number Again"
+          />
+          <button type="submit">Change Password</button>
+        </form>
+        {% if error %}
+        <p class="error" style="color: red;">{{ error }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+.scrollable-content {
+  height: calc(100vh - 120px); /* Subtract header & footer height */
+  overflow-y: auto;
+  padding: 20px;
+
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15px, black 95%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 15px, black 95%, transparent);
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+/* Optional: remove default scrollbar style (for WebKit) */
+ .scrollable-content::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* hide scrollbar track */
+}
+
+.scrollable-content {
+  scrollbar-width: none; /* for Firefox */
+  -ms-overflow-style: none; /* for IE 10+ */
+} */
+
+
+.movie-list {
+  margin-top: 50px;
+    top: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-auto-flow: column;
+    gap: 5px;
+    padding: 0 15px;
+    padding-bottom: 275 px;
+}
+
+.movie-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.movie-item p {
+    text-align: center;
+    margin-top: 1px;
+    font-weight: bold;
+    color: white;
+}

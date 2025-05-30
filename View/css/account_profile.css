@@ -1,0 +1,65 @@
+/* .footer-navbar { */
+    /* right: 0.55em; */
+/* } */
+
+.user-profile-features {
+    position: relative;
+    top: 210px;
+}
+
+#saldo-member {
+    position: relative;
+    top: 100px;
+    margin: 0;
+    padding: 0;
+    font-size: 48px;
+    color: yellow;
+}
+
+#saldo-member hr {
+    height: 4px;
+    color: yellow;
+    border-color: yellow;
+}
+
+.nama-user {
+    position: relative;
+    top: 17.5%;
+    color: white;
+    font-size: 36px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}
+.nama-admin {
+    font-size: 24px;
+    top: 17.5px;
+    right: 140px;
+}
+
+.user-profile-features a {
+  display:flex;
+  font-size: 30px;
+  color: black;
+  text-decoration: underline;
+  text-decoration-line: none;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 800;
+  border-color: yellow;
+  border-style: solid;
+  border-radius: 4px;
+  top: 100px;
+  justify-content: center;
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: rgb(255, 255, 149);
+}
+
+.user-profile-features a:hover {
+    background-color: rgb(54, 54, 54);
+    color: yellow;
+    transition: 0.3s;
+}
+
+.user-admin-features {
+    top: 80px;
+}

@@ -1,0 +1,37 @@
+h2 {
+    color: white;
+    text-transform: uppercase;
+}
+
+form > label {
+    color: white;
+}
+
+.genre-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+    align-items: left;
+    text-align: left;
+    justify-content: left;
+}
+
+.genre-options label {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-weight: normal;
+    color:white;
+}
+
+.genre-options input {
+    margin-right: 6px;
+    margin-left: 0;
+    margin: 0;
+}
+
+textarea {
+    width: 300px;
+}
